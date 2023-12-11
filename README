@@ -1,0 +1,12 @@
+## Integration testing for Red Hat Data Science Pipeline, CodeFlare and KubeRay
+### Container image built from Dockerfile
+quay.io/yuanchichang_ibm/integration_testing/dsp_codeflare_int_testing:0.1
+### Data Science Pipeline workflow file
+yet_another_ray_integration_test.py
+### Ray application design
+1. Design followed scikit learn example https://scikit-learn.org/stable/auto_examples/text/plot_document_clustering.html
+2. load_sample_data.py reads data from the 20newsgroups dataset.
+3. docker_cluster_driver.py launches two Ray actors and configures a different vectorizer for each.
+4. docker_cluster_driver.py submits newsgroup data to Ray actors, which executes sklearn pipeline to fit KMeans clustering
+with vectorized data.
+5. doc_cluster_actor.py returns the V-measure metric of resulting clusters. 
